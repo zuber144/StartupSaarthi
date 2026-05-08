@@ -14,7 +14,7 @@ const AIRecommendation = () => {
           </div>
           <h3 className="text-3xl font-extrabold text-white mb-3 tracking-tight">Accelerate your data room prep.</h3>
           <p className="text-base text-gray-300 max-w-2xl leading-relaxed font-medium">
-            FundAI detected missing IP assignment documents and incomplete cap table formatting. We can auto-generate standard NDAs, IP assignments, and format your cap table to VC standards in minutes.
+            Startup Saarthi detected missing IP assignment documents and incomplete cap table formatting. We can auto-generate standard NDAs, IP assignments, and format your cap table to VC standards in minutes.
           </p>
         </div>
         

@@ -51,7 +51,7 @@ const DiscoveryFeed = () => {
           <div className="relative z-10 p-8 md:w-2/3 flex flex-col gap-4">
             <div className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-100 to-amber-50 text-amber-800 px-3 py-1 rounded-full w-fit border border-amber-200">
               <span className="material-symbols-outlined text-[14px]">stars</span>
-              <span className="text-[10px] font-bold uppercase tracking-widest">FundAI Pro</span>
+              <span className="text-[10px] font-bold uppercase tracking-widest">Startup Saarthi Pro</span>
             </div>
             <h2 className="text-3xl font-extrabold text-on-surface tracking-tight leading-tight">Unlock Premium Deal Flow Intelligence</h2>
             <p className="text-base text-on-surface-variant max-w-lg leading-relaxed">
