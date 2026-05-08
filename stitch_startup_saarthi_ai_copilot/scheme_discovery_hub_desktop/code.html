@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FundAI - Scheme Discovery Hub</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-container": "#dfe8ff",
+                        "primary-container": "#0066cc",
+                        "surface-bright": "#fcf8fb",
+                        "tertiary-container": "#67686c",
+                        "on-primary": "#ffffff",
+                        "primary": "#004e9f",
+                        "error-container": "#ffdad6",
+                        "outline-variant": "#c1c6d5",
+                        "secondary-fixed": "#e2e2e4",
+                        "surface-container-high": "#eae7ea",
+                        "outline": "#727784",
+                        "secondary-container": "#dfdfe1",
+                        "on-surface": "#1b1b1d",
+                        "on-primary-fixed-variant": "#00458e",
+                        "inverse-on-surface": "#f3f0f2",
+                        "tertiary-fixed": "#e2e2e7",
+                        "surface-dim": "#dcd9dc",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-fixed": "#1a1c1d",
+                        "primary-fixed": "#d7e3ff",
+                        "on-tertiary": "#ffffff",
+                        "secondary": "#5d5e60",
+                        "surface-container-low": "#f6f3f5",
+                        "surface": "#fcf8fb",
+                        "on-error": "#ffffff",
+                        "primary-fixed-dim": "#aac7ff",
+                        "surface-tint": "#005cba",
+                        "on-surface-variant": "#414753",
+                        "tertiary": "#4e5054",
+                        "on-tertiary-fixed": "#1a1c1f",
+                        "surface-container-highest": "#e4e2e4",
+                        "on-tertiary-container": "#e8e8ed",
+                        "background": "#fcf8fb",
+                        "surface-variant": "#e4e2e4",
+                        "inverse-surface": "#303032",
+                        "error": "#ba1a1a",
+                        "on-primary-fixed": "#001b3e",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed-dim": "#c6c6cb",
+                        "inverse-primary": "#aac7ff",
+                        "on-tertiary-fixed-variant": "#45474b",
+                        "on-background": "#1b1b1d",
+                        "on-secondary-container": "#616365",
+                        "surface-container": "#f0edef",
+                        "on-secondary-fixed-variant": "#454749",
+                        "secondary-fixed-dim": "#c6c6c8"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-page": "48px",
+                        "container-max": "1200px",
+                        "section-padding": "80px",
+                        "unit": "8px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Geist"],
+                        "subhead-caps": ["Geist"],
+                        "body-md": ["Geist"],
+                        "display": ["Geist"],
+                        "headline-lg": ["Geist"],
+                        "body-lg": ["Geist"],
+                        "label-sm": ["Geist"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", { "lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "subhead-caps": ["12px", { "lineHeight": "1.5", "letterSpacing": "0.1em", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "1.5", "letterSpacing": "0em", "fontWeight": "400" }],
+                        "display": ["64px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "headline-lg": ["40px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "letterSpacing": "0em", "fontWeight": "400" }],
+                        "label-sm": ["13px", { "lineHeight": "1.4", "letterSpacing": "0em", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Geist', sans-serif; }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col pt-20">
+<!-- TopNavBar -->
+<header class="fixed top-0 left-0 w-full z-50 bg-white/80 dark:bg-black/80 backdrop-blur-xl border-b border-outline-variant/30 dark:border-outline/20 shadow-[0_10px_40px_rgba(0,0,0,0.04)] dark:shadow-none transition-all">
+<div class="flex justify-between items-center max-w-[1200px] mx-auto px-margin-page h-20">
+<div class="flex items-center gap-8">
+<span class="font-display text-headline-md tracking-tighter text-on-surface dark:text-on-surface-variant">FundAI</span>
+<nav class="hidden md:flex gap-6 items-center">
+<a class="text-on-surface-variant dark:text-secondary-fixed-dim font-medium hover:text-primary dark:hover:text-primary-fixed transition-colors font-label-sm text-label-sm hover:bg-surface-container-low/50 dark:hover:bg-surface-container-highest/10 duration-300 px-3 py-2 rounded-lg" href="#">Explore</a>
+<a class="text-on-surface-variant dark:text-secondary-fixed-dim font-medium hover:text-primary dark:hover:text-primary-fixed transition-colors font-label-sm text-label-sm hover:bg-surface-container-low/50 dark:hover:bg-surface-container-highest/10 duration-300 px-3 py-2 rounded-lg" href="#">Funding OS</a>
+<a class="text-primary dark:text-primary-fixed font-bold border-b-2 border-primary dark:border-primary-fixed pb-1 font-label-sm text-label-sm hover:bg-surface-container-low/50 dark:hover:bg-surface-container-highest/10 duration-300 px-3 py-2" href="#">Analyzer</a>
+<a class="text-on-surface-variant dark:text-secondary-fixed-dim font-medium hover:text-primary dark:hover:text-primary-fixed transition-colors font-label-sm text-label-sm hover:bg-surface-container-low/50 dark:hover:bg-surface-container-highest/10 duration-300 px-3 py-2 rounded-lg" href="#">Hub</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="bg-[#0066CC] text-white font-label-sm text-label-sm px-4 py-2 rounded-xl shadow-sm border border-transparent hover:bg-primary-container/90 transition-all active:scale-[0.98]">Get Funded</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors hover:bg-surface-container-low/50 p-2 rounded-full active:scale-[0.98]"><span class="material-symbols-outlined">account_circle</span></button>
+</div>
+</div>
+</header>
+<main class="flex-1 max-w-[1200px] mx-auto w-full px-margin-page py-section-padding flex gap-gutter">
+<!-- Sidebar -->
+<aside class="w-64 flex-shrink-0 flex flex-col gap-8 hidden md:flex">
+<div>
+<h2 class="font-headline-md text-headline-md mb-4 text-on-surface">Filters</h2>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-[#F5F5F7] border border-transparent rounded-xl font-body-md text-body-md text-on-surface focus:outline-none focus:border-[#0066CC] focus:ring-1 focus:ring-[#0066CC] transition-all" placeholder="Search schemes..." type="text"/>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<h3 class="font-subhead-caps text-subhead-caps text-outline uppercase tracking-wider mb-2">Category</h3>
+<label class="flex items-center gap-3 p-2 rounded-lg hover:bg-surface-container-low cursor-pointer transition-colors group">
+<div class="w-5 h-5 rounded border border-outline-variant group-hover:border-primary flex items-center justify-center bg-primary text-white"><span class="material-symbols-outlined text-[14px]">check</span></div>
+<span class="font-body-md text-body-md text-on-surface">Govt Grants</span>
+</label>
+<label class="flex items-center gap-3 p-2 rounded-lg hover:bg-surface-container-low cursor-pointer transition-colors group">
+<div class="w-5 h-5 rounded border border-outline-variant group-hover:border-primary flex items-center justify-center"></div>
+<span class="font-body-md text-body-md text-on-surface">Venture Capital</span>
+</label>
+<label class="flex items-center gap-3 p-2 rounded-lg hover:bg-surface-container-low cursor-pointer transition-colors group">
+<div class="w-5 h-5 rounded border border-outline-variant group-hover:border-primary flex items-center justify-center"></div>
+<span class="font-body-md text-body-md text-on-surface">Incubation</span>
+</label>
+<label class="flex items-center gap-3 p-2 rounded-lg hover:bg-surface-container-low cursor-pointer transition-colors group">
+<div class="w-5 h-5 rounded border border-outline-variant group-hover:border-primary flex items-center justify-center"></div>
+<span class="font-body-md text-body-md text-on-surface">Angel Networks</span>
+</label>
+</div>
+<div class="flex flex-col gap-2">
+<h3 class="font-subhead-caps text-subhead-caps text-outline uppercase tracking-wider mb-2">Funding Stage</h3>
+<label class="flex items-center gap-3 p-2 rounded-lg hover:bg-surface-container-low cursor-pointer transition-colors group">
+<div class="w-5 h-5 rounded border border-outline-variant group-hover:border-primary flex items-center justify-center"></div>
+<span class="font-body-md text-body-md text-on-surface">Pre-Seed</span>
+</label>
+<label class="flex items-center gap-3 p-2 rounded-lg hover:bg-surface-container-low cursor-pointer transition-colors group">
+<div class="w-5 h-5 rounded border border-outline-variant group-hover:border-primary flex items-center justify-center bg-primary text-white"><span class="material-symbols-outlined text-[14px]">check</span></div>
+<span class="font-body-md text-body-md text-on-surface">Seed</span>
+</label>
+<label class="flex items-center gap-3 p-2 rounded-lg hover:bg-surface-container-low cursor-pointer transition-colors group">
+<div class="w-5 h-5 rounded border border-outline-variant group-hover:border-primary flex items-center justify-center"></div>
+<span class="font-body-md text-body-md text-on-surface">Series A</span>
+</label>
+</div>
+</aside>
+<!-- Main Feed -->
+<div class="flex-1 flex flex-col gap-6">
+<div class="flex justify-between items-end mb-4 border-b border-[#E8E8ED] pb-4">
+<div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface mb-2">Discovery Hub</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">AI-curated funding schemes matching your startup profile.</p>
+</div>
+<div class="flex items-center gap-2 bg-[#F5F5F7] p-1 rounded-full">
+<button class="px-4 py-1.5 rounded-full bg-white shadow-sm font-label-sm text-label-sm text-on-surface">All Matches</button>
+<button class="px-4 py-1.5 rounded-full hover:bg-white/50 font-label-sm text-label-sm text-on-surface-variant transition-colors">Saved</button>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+<!-- Scheme Card 1 -->
+<div class="bg-surface-container-lowest border border-[#E8E8ED] rounded-2xl p-6 shadow-[0_10px_40px_rgba(0,0,0,0.02)] hover:shadow-[0_10px_40px_rgba(0,0,0,0.06)] transition-all duration-300 flex flex-col h-full group relative overflow-hidden">
+<div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-emerald-400 to-emerald-500"></div>
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">account_balance</span>
+</div>
+<div>
+<h3 class="font-headline-md text-[20px] text-on-surface">Startup India Seed Fund</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Government Grant</p>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-display text-[24px] text-emerald-600 tracking-tight">98%</span>
+<span class="font-subhead-caps text-subhead-caps text-outline">Match</span>
+</div>
+</div>
+<div class="flex gap-4 mb-6">
+<div class="flex-1 bg-[#F5F5F7] p-3 rounded-xl border border-[#E8E8ED]">
+<span class="block font-subhead-caps text-subhead-caps text-outline mb-1">Funding Up To</span>
+<span class="font-body-md text-body-md text-on-surface font-semibold">₹50 Lakhs</span>
+</div>
+<div class="flex-1 bg-[#F5F5F7] p-3 rounded-xl border border-[#E8E8ED]">
+<span class="block font-subhead-caps text-subhead-caps text-outline mb-1">Deadline</span>
+<span class="font-body-md text-body-md text-on-surface font-semibold text-error">Rolling</span>
+</div>
+</div>
+<div class="mb-6 flex-1">
+<h4 class="font-label-sm text-label-sm text-on-surface font-semibold mb-2 flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-[#0066CC]">auto_awesome</span>
+                            AI Reasoning
+                        </h4>
+<p class="font-body-md text-[14px] text-on-surface-variant leading-relaxed bg-surface-container-low p-4 rounded-xl border border-[#E8E8ED]">
+                            Your DPIIT recognition and focus on deep-tech align perfectly with the core mandate of this fund. Your current runway and traction metrics place you in the optimal percentile for approval.
+                        </p>
+</div>
+<div class="flex gap-3 mt-auto">
+<button class="flex-1 bg-[#F5F5F7] text-[#1D1D1F] font-label-sm text-label-sm px-4 py-2.5 rounded-xl border border-[#E8E8ED] hover:bg-surface-container-highest transition-colors">Save</button>
+<button class="flex-1 bg-[#0066CC] text-white font-label-sm text-label-sm px-4 py-2.5 rounded-xl shadow-sm hover:bg-primary-container/90 transition-colors">Apply Now</button>
+</div>
+</div>
+<!-- Scheme Card 2 -->
+<div class="bg-surface-container-lowest border border-[#E8E8ED] rounded-2xl p-6 shadow-[0_10px_40px_rgba(0,0,0,0.02)] hover:shadow-[0_10px_40px_rgba(0,0,0,0.06)] transition-all duration-300 flex flex-col h-full group relative overflow-hidden">
+<div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-400 to-blue-500"></div>
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">rocket_launch</span>
+</div>
+<div>
+<h3 class="font-headline-md text-[20px] text-on-surface">Sequoia Surge</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Venture Capital</p>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-display text-[24px] text-primary-container tracking-tight">92%</span>
+<span class="font-subhead-caps text-subhead-caps text-outline">Match</span>
+</div>
+</div>
+<div class="flex gap-4 mb-6">
+<div class="flex-1 bg-[#F5F5F7] p-3 rounded-xl border border-[#E8E8ED]">
+<span class="block font-subhead-caps text-subhead-caps text-outline mb-1">Funding Up To</span>
+<span class="font-body-md text-body-md text-on-surface font-semibold">$3M</span>
+</div>
+<div class="flex-1 bg-[#F5F5F7] p-3 rounded-xl border border-[#E8E8ED]">
+<span class="block font-subhead-caps text-subhead-caps text-outline mb-1">Deadline</span>
+<span class="font-body-md text-body-md text-on-surface font-semibold">Cohort 10 Open</span>
+</div>
+</div>
+<div class="mb-6 flex-1">
+<h4 class="font-label-sm text-label-sm text-on-surface font-semibold mb-2 flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-[#0066CC]">auto_awesome</span>
+                            AI Reasoning
+                        </h4>
+<p class="font-body-md text-[14px] text-on-surface-variant leading-relaxed bg-surface-container-low p-4 rounded-xl border border-[#E8E8ED]">
+                            Surge has a strong track record of backing SaaS founders in your region. Your recent MoM growth rate of 15% matches their thesis for early-stage scalable businesses.
+                        </p>
+</div>
+<div class="flex gap-3 mt-auto">
+<button class="flex-1 bg-[#F5F5F7] text-[#1D1D1F] font-label-sm text-label-sm px-4 py-2.5 rounded-xl border border-[#E8E8ED] hover:bg-surface-container-highest transition-colors">Save</button>
+<button class="flex-1 bg-[#0066CC] text-white font-label-sm text-label-sm px-4 py-2.5 rounded-xl shadow-sm hover:bg-primary-container/90 transition-colors">View Details</button>
+</div>
+</div>
+<!-- Feature Card: Premium Intelligence -->
+<div class="lg:col-span-2 relative rounded-2xl overflow-hidden bg-surface-container-lowest border border-[#E8E8ED] shadow-[0_10px_40px_rgba(0,0,0,0.04)] min-h-[300px] flex items-center">
+<div class="absolute inset-0 bg-cover bg-center opacity-20" data-alt="A macro shot of a sleek, modern server rack or data analytics dashboard displaying glowing data points and lines. The aesthetic is high-tech, precise, and premium, utilizing a cool color palette of deep blues and crisp whites. The lighting is dramatic yet clean, suggesting advanced technology and actionable intelligence." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBEJAqh6bNscKQGGC2FHErIEJ6KDotbEs62x7xAT9nj4UvecFpDmp0rhKXfEeIvzM2xV_eCqO_xRm1u2kaw1XomzI47XgmzUbDXuFJIPuDxKFqe8-pEuZU7HQwhnX2Hpdou4BNL1wFpp5v0mPynQzmEriICH9IdH2fj81AuNL1QEr2t-vh2Zis6nvPEBSvpioN5HP_SuRqQJY24cxLLxp_qCKaNcbl4FrxWbokF1GWukHXsLThwbWmlwtTR-0PD45jKFSOuyk_2KSY');"></div>
+<div class="absolute inset-0 bg-gradient-to-r from-surface-container-lowest via-surface-container-lowest/90 to-transparent z-0"></div>
+<div class="relative z-10 p-8 md:w-2/3 flex flex-col gap-4">
+<div class="inline-flex items-center gap-2 bg-gradient-to-r from-amber-100 to-amber-50 text-amber-800 px-3 py-1 rounded-full w-fit border border-amber-200">
+<span class="material-symbols-outlined text-[14px]">stars</span>
+<span class="font-subhead-caps text-subhead-caps">FundAI Pro</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Unlock Premium Deal Flow Intelligence</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-lg">
+                            Get access to hidden RFPs, historical success rates of VCs, and direct warm intro pathways. Our predictive models increase your funding likelihood by 3x.
+                        </p>
+<div class="mt-4 flex items-center gap-4">
+<button class="bg-[#1D1D1F] text-white font-label-sm text-label-sm px-6 py-3 rounded-xl shadow-sm hover:bg-black transition-colors">Upgrade to Pro</button>
+<a class="font-label-sm text-label-sm text-primary hover:underline underline-offset-4" href="#">Compare Plans</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-section-padding bg-surface-container-lowest dark:bg-surface-dim border-t border-outline-variant/20 dark:border-outline/10 mt-auto">
+<div class="max-w-[1200px] mx-auto px-margin-page flex flex-col md:flex-row justify-between items-center gap-gutter">
+<span class="font-display text-headline-sm text-on-surface dark:text-on-surface-variant font-bold">FundAI</span>
+<span class="font-body-md text-body-md text-primary dark:text-primary-fixed">© 2024 FundAI Intelligence. All rights reserved.</span>
+<div class="flex gap-6">
+<a class="text-on-secondary-container dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-primary-fixed transition-colors hover:underline underline-offset-4 decoration-primary/30 opacity-80 hover:opacity-100 font-label-sm text-label-sm" href="#">Manifesto</a>
+<a class="text-on-secondary-container dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-primary-fixed transition-colors hover:underline underline-offset-4 decoration-primary/30 opacity-80 hover:opacity-100 font-label-sm text-label-sm" href="#">Privacy Policy</a>
+<a class="text-on-secondary-container dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-primary-fixed transition-colors hover:underline underline-offset-4 decoration-primary/30 opacity-80 hover:opacity-100 font-label-sm text-label-sm" href="#">Terms of Service</a>
+<a class="text-on-secondary-container dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-primary-fixed transition-colors hover:underline underline-offset-4 decoration-primary/30 opacity-80 hover:opacity-100 font-label-sm text-label-sm" href="#">Contact</a>
+</div>
+</div>
+</footer>
+</body></html>

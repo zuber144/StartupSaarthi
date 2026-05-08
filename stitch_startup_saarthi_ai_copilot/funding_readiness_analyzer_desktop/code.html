@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Funding Readiness Analyzer - FundAI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body { font-family: 'Geist', sans-serif; }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-container": "#dfe8ff",
+                        "primary-container": "#0066cc",
+                        "surface-bright": "#fcf8fb",
+                        "tertiary-container": "#67686c",
+                        "on-primary": "#ffffff",
+                        "primary": "#004e9f",
+                        "error-container": "#ffdad6",
+                        "outline-variant": "#c1c6d5",
+                        "secondary-fixed": "#e2e2e4",
+                        "surface-container-high": "#eae7ea",
+                        "outline": "#727784",
+                        "secondary-container": "#dfdfe1",
+                        "on-surface": "#1b1b1d",
+                        "on-primary-fixed-variant": "#00458e",
+                        "inverse-on-surface": "#f3f0f2",
+                        "tertiary-fixed": "#e2e2e7",
+                        "surface-dim": "#dcd9dc",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-fixed": "#1a1c1d",
+                        "primary-fixed": "#d7e3ff",
+                        "on-tertiary": "#ffffff",
+                        "secondary": "#5d5e60",
+                        "surface-container-low": "#f6f3f5",
+                        "surface": "#fcf8fb",
+                        "on-error": "#ffffff",
+                        "primary-fixed-dim": "#aac7ff",
+                        "surface-tint": "#005cba",
+                        "on-surface-variant": "#414753",
+                        "tertiary": "#4e5054",
+                        "on-tertiary-fixed": "#1a1c1f",
+                        "surface-container-highest": "#e4e2e4",
+                        "on-tertiary-container": "#e8e8ed",
+                        "background": "#fcf8fb",
+                        "surface-variant": "#e4e2e4",
+                        "inverse-surface": "#303032",
+                        "error": "#ba1a1a",
+                        "on-primary-fixed": "#001b3e",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed-dim": "#c6c6cb",
+                        "inverse-primary": "#aac7ff",
+                        "on-tertiary-fixed-variant": "#45474b",
+                        "on-background": "#1b1b1d",
+                        "on-secondary-container": "#616365",
+                        "surface-container": "#f0edef",
+                        "on-secondary-fixed-variant": "#454749",
+                        "secondary-fixed-dim": "#c6c6c8"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-page": "48px",
+                        "container-max": "1200px",
+                        "section-padding": "80px",
+                        "unit": "8px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Geist"],
+                        "subhead-caps": ["Geist"],
+                        "body-md": ["Geist"],
+                        "display": ["Geist"],
+                        "headline-lg": ["Geist"],
+                        "body-lg": ["Geist"],
+                        "label-sm": ["Geist"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", { "lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "subhead-caps": ["12px", { "lineHeight": "1.5", "letterSpacing": "0.1em", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "1.5", "letterSpacing": "0em", "fontWeight": "400" }],
+                        "display": ["64px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "headline-lg": ["40px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "letterSpacing": "0em", "fontWeight": "400" }],
+                        "label-sm": ["13px", { "lineHeight": "1.4", "letterSpacing": "0em", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col pt-20">
+<!-- TopNavBar -->
+<nav class="fixed top-0 left-0 w-full z-50 bg-white/80 dark:bg-black/80 backdrop-blur-xl border-b border-outline-variant/30 dark:border-outline/20 shadow-[0_10px_40px_rgba(0,0,0,0.04)] dark:shadow-none">
+<div class="flex justify-between items-center max-w-[1200px] mx-auto px-margin-page h-20">
+<div class="font-display text-headline-md tracking-tighter text-on-surface dark:text-on-surface-variant">
+                FundAI
+            </div>
+<div class="hidden md:flex gap-gutter items-center">
+<a class="text-on-surface-variant dark:text-secondary-fixed-dim font-medium hover:text-primary dark:hover:text-primary-fixed transition-colors font-label-sm text-label-sm" href="#">Explore</a>
+<a class="text-on-surface-variant dark:text-secondary-fixed-dim font-medium hover:text-primary dark:hover:text-primary-fixed transition-colors font-label-sm text-label-sm" href="#">Funding OS</a>
+<a class="text-primary dark:text-primary-fixed font-bold border-b-2 border-primary dark:border-primary-fixed pb-1 font-label-sm text-label-sm" href="#">Analyzer</a>
+<a class="text-on-surface-variant dark:text-secondary-fixed-dim font-medium hover:text-primary dark:hover:text-primary-fixed transition-colors font-label-sm text-label-sm" href="#">Hub</a>
+</div>
+<div class="flex items-center gap-unit">
+<button class="hidden md:flex items-center justify-center bg-primary text-on-primary font-label-sm text-label-sm px-4 py-2 rounded-xl border border-primary inset-1 shadow-sm active:scale-[0.98] transition-transform duration-200 hover:bg-surface-container-low/50 dark:hover:bg-surface-container-highest/10 transition-all duration-300">
+                    Get Funded
+                </button>
+<button class="p-2 rounded-full hover:bg-surface-container-low/50 dark:hover:bg-surface-container-highest/10 transition-all duration-300 active:scale-[0.98]">
+<span class="material-symbols-outlined text-on-surface">account_circle</span>
+</button>
+</div>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-grow w-full max-w-container-max mx-auto px-margin-page py-section-padding flex flex-col gap-12">
+<!-- Header -->
+<header class="flex justify-between items-end pb-6 border-b border-outline-variant/20">
+<div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface mb-2">Funding Readiness</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Last updated: Today, 09:41 AM</p>
+</div>
+<button class="flex items-center gap-2 bg-surface-container-low text-on-surface font-label-sm text-label-sm px-5 py-2.5 rounded-xl border border-outline-variant/30 hover:bg-surface-container-high transition-colors active:scale-95">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">download</span>
+                Export Report
+            </button>
+</header>
+<!-- Top Section: Score & Priority Alerts (Bento Layout) -->
+<section class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<!-- Readiness Score Card -->
+<div class="lg:col-span-1 bg-surface-container-lowest rounded-[24px] p-8 border border-outline-variant/20 shadow-[0_10px_40px_rgba(0,0,0,0.02)] flex flex-col items-center justify-center relative overflow-hidden">
+<h2 class="font-subhead-caps text-subhead-caps text-on-surface-variant absolute top-6 left-6">OVERALL SCORE</h2>
+<div class="relative w-48 h-48 mt-8 flex items-center justify-center">
+<!-- Faux Circular Progress -->
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 100 100">
+<circle cx="50" cy="50" fill="none" r="45" stroke="var(--color-surface-container-high)" stroke-width="8"></circle>
+<circle class="transition-all duration-1000 ease-out" cx="50" cy="50" fill="none" r="45" stroke="var(--color-primary-container)" stroke-dasharray="283" stroke-dashoffset="51" stroke-linecap="round" stroke-width="8"></circle>
+</svg>
+<div class="absolute flex flex-col items-center">
+<span class="font-display text-display text-on-surface leading-none">82</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-1">/100</span>
+</div>
+</div>
+<div class="mt-8 text-center">
+<p class="font-body-md text-body-md text-on-surface"><strong class="font-semibold">Top 15%</strong> of similar stage startups</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-1">+4 points since last week</p>
+</div>
+</div>
+<!-- Priority Alerts Grid -->
+<div class="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-4">
+<h2 class="col-span-full font-subhead-caps text-subhead-caps text-on-surface-variant mb-2">ATTENTION NEEDED</h2>
+<!-- Alert 1 -->
+<div class="bg-surface-container-lowest rounded-[20px] p-5 border border-outline-variant/20 shadow-[0_4px_20px_rgba(0,0,0,0.02)] flex gap-4 items-start">
+<div class="w-10 h-10 rounded-full bg-error-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-error" style="font-variation-settings: 'FILL' 1;">gavel</span>
+</div>
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="font-label-sm text-label-sm text-error font-semibold">Critical</span>
+<h3 class="font-headline-md text-[18px] text-on-surface leading-tight">Legal</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-3">Incomplete IP assignment for 2 early contributors.</p>
+<a class="font-label-sm text-label-sm text-primary hover:underline flex items-center gap-1" href="#">Fix now <span class="material-symbols-outlined text-[14px]">arrow_forward</span></a>
+</div>
+</div>
+<!-- Alert 2 -->
+<div class="bg-surface-container-lowest rounded-[20px] p-5 border border-outline-variant/20 shadow-[0_4px_20px_rgba(0,0,0,0.02)] flex gap-4 items-start">
+<div class="w-10 h-10 rounded-full bg-[#fff4e5] flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[#b26a00]" style="font-variation-settings: 'FILL' 1;">account_balance</span>
+</div>
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="font-label-sm text-label-sm text-[#b26a00] font-semibold">Warning</span>
+<h3 class="font-headline-md text-[18px] text-on-surface leading-tight">Financial</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-3">Burn rate exceeds 18-month runway projection.</p>
+<a class="font-label-sm text-label-sm text-primary hover:underline flex items-center gap-1" href="#">Review model <span class="material-symbols-outlined text-[14px]">arrow_forward</span></a>
+</div>
+</div>
+<!-- Alert 3 -->
+<div class="bg-surface-container-lowest rounded-[20px] p-5 border border-outline-variant/20 shadow-[0_4px_20px_rgba(0,0,0,0.02)] flex gap-4 items-start md:col-span-2">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-on-surface-variant" style="font-variation-settings: 'FILL' 1;">groups</span>
+</div>
+<div class="flex-grow flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-semibold">Notice</span>
+<h3 class="font-headline-md text-[18px] text-on-surface leading-tight">Team</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">Identified a gap in technical advisory board.</p>
+</div>
+<button class="bg-surface-container-low text-on-surface font-label-sm text-label-sm px-4 py-2 rounded-lg border border-outline-variant/30 hover:bg-surface-container-high transition-colors whitespace-nowrap">
+                            Explore Network
+                        </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Breakdown Section (Multi-column) -->
+<section>
+<h2 class="font-subhead-caps text-subhead-caps text-on-surface-variant mb-6 border-b border-outline-variant/20 pb-2">METRIC BREAKDOWN</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Financial Column -->
+<div class="flex flex-col gap-6">
+<div class="flex items-center gap-3 border-b border-outline-variant/10 pb-3">
+<span class="material-symbols-outlined text-primary text-[28px]" style="font-variation-settings: 'FILL' 0;">query_stats</span>
+<h3 class="font-headline-md text-[20px] text-on-surface">Financial</h3>
+<span class="ml-auto font-label-sm text-label-sm bg-surface-container-high px-2 py-1 rounded-md">88/100</span>
+</div>
+<div class="space-y-4">
+<div>
+<div class="flex justify-between font-label-sm text-label-sm mb-1">
+<span class="text-on-surface">Revenue Quality</span>
+<span class="text-primary font-medium">Excellent Standing</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 95%;"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between font-label-sm text-label-sm mb-1">
+<span class="text-on-surface">Unit Economics</span>
+<span class="text-on-surface-variant">Good</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 80%;"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between font-label-sm text-label-sm mb-1">
+<span class="text-on-surface">Cap Table Cleanliness</span>
+<span class="text-[#b26a00] font-medium">Action Recommended</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-[#ffb74d] rounded-full" style="width: 60%;"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Team Column -->
+<div class="flex flex-col gap-6">
+<div class="flex items-center gap-3 border-b border-outline-variant/10 pb-3">
+<span class="material-symbols-outlined text-primary text-[28px]" style="font-variation-settings: 'FILL' 0;">engineering</span>
+<h3 class="font-headline-md text-[20px] text-on-surface">Team</h3>
+<span class="ml-auto font-label-sm text-label-sm bg-surface-container-high px-2 py-1 rounded-md">76/100</span>
+</div>
+<div class="space-y-4">
+<div>
+<div class="flex justify-between font-label-sm text-label-sm mb-1">
+<span class="text-on-surface">Founder Experience</span>
+<span class="text-primary font-medium">Excellent Standing</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 90%;"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between font-label-sm text-label-sm mb-1">
+<span class="text-on-surface">Key Roles Filled</span>
+<span class="text-on-surface-variant">Good</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 75%;"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between font-label-sm text-label-sm mb-1">
+<span class="text-on-surface">Advisory Board</span>
+<span class="text-error font-medium">Action Required</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-error rounded-full" style="width: 40%;"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Legal Column -->
+<div class="flex flex-col gap-6">
+<div class="flex items-center gap-3 border-b border-outline-variant/10 pb-3">
+<span class="material-symbols-outlined text-primary text-[28px]" style="font-variation-settings: 'FILL' 0;">description</span>
+<h3 class="font-headline-md text-[20px] text-on-surface">Legal</h3>
+<span class="ml-auto font-label-sm text-label-sm bg-surface-container-high px-2 py-1 rounded-md">65/100</span>
+</div>
+<div class="space-y-4">
+<div>
+<div class="flex justify-between font-label-sm text-label-sm mb-1">
+<span class="text-on-surface">Incorporation Status</span>
+<span class="text-primary font-medium">Complete</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 100%;"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between font-label-sm text-label-sm mb-1">
+<span class="text-on-surface">Data Room Completeness</span>
+<span class="text-on-surface-variant">In Progress</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 55%;"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between font-label-sm text-label-sm mb-1">
+<span class="text-on-surface">IP Assignments</span>
+<span class="text-error font-medium">Action Required</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-error rounded-full" style="width: 30%;"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- AI Recommendation (Wide Dark Card) -->
+<section class="mt-8">
+<div class="bg-[#1D1D1F] rounded-[24px] p-8 md:p-10 flex flex-col md:flex-row items-center justify-between gap-8 shadow-xl relative overflow-hidden">
+<!-- Decorative background elements -->
+<div class="absolute -right-20 -top-20 w-64 h-64 bg-primary/20 rounded-full blur-[80px] pointer-events-none"></div>
+<div class="absolute -left-20 -bottom-20 w-64 h-64 bg-[#00ffff]/10 rounded-full blur-[80px] pointer-events-none"></div>
+<div class="z-10 flex-grow">
+<div class="flex items-center gap-2 mb-3">
+<span class="material-symbols-outlined text-[#00ffff]" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<span class="font-subhead-caps text-subhead-caps text-[#00ffff]">AI STRATEGY</span>
+</div>
+<h3 class="font-headline-lg text-[28px] text-white mb-3">Accelerate your data room prep.</h3>
+<p class="font-body-md text-body-md text-gray-300 max-w-2xl">
+                        FundAI detected missing IP assignment documents and incomplete cap table formatting. We can auto-generate standard NDAs, IP assignments, and format your cap table to VC standards in minutes.
+                    </p>
+</div>
+<div class="z-10 shrink-0 w-full md:w-auto">
+<button class="w-full md:w-auto bg-white text-black font-label-sm text-label-sm font-semibold px-6 py-4 rounded-xl hover:bg-gray-100 transition-colors shadow-lg active:scale-95 flex items-center justify-center gap-2">
+                        Start Document Workflow
+                        <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-section-padding bg-surface-container-lowest dark:bg-surface-dim border-t border-outline-variant/20 dark:border-outline/10 mt-auto">
+<div class="max-w-[1200px] mx-auto px-margin-page flex flex-col md:flex-row justify-between items-center gap-gutter">
+<div class="font-display text-headline-sm text-on-surface dark:text-on-surface-variant opacity-80 hover:opacity-100 transition-opacity">
+                FundAI
+            </div>
+<div class="flex flex-wrap justify-center gap-6">
+<a class="font-label-sm text-label-sm text-on-secondary-container dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-primary-fixed transition-colors hover:underline underline-offset-4 decoration-primary/30" href="#">Manifesto</a>
+<a class="font-label-sm text-label-sm text-on-secondary-container dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-primary-fixed transition-colors hover:underline underline-offset-4 decoration-primary/30" href="#">Privacy Policy</a>
+<a class="font-label-sm text-label-sm text-on-secondary-container dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-primary-fixed transition-colors hover:underline underline-offset-4 decoration-primary/30" href="#">Terms of Service</a>
+<a class="font-label-sm text-label-sm text-on-secondary-container dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-primary-fixed transition-colors hover:underline underline-offset-4 decoration-primary/30" href="#">Contact</a>
+</div>
+<div class="font-body-md text-body-md text-on-secondary-container dark:text-secondary-fixed-dim text-sm">
+                © 2024 FundAI Intelligence. All rights reserved.
+            </div>
+</div>
+</footer>
+</body></html>
