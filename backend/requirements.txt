@@ -10,3 +10,5 @@ httpx
 python-multipart
 alembic
 asyncpg
+passlib[bcrypt]
+python-jose[cryptography]

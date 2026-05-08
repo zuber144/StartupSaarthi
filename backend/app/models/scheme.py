@@ -1,6 +1,6 @@
 import uuid
 from datetime import datetime, timezone
-from sqlalchemy import String, DateTime, text, Float
+from sqlalchemy import String, DateTime, text, Float, Text
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from sqlalchemy.dialects.postgresql import UUID, JSONB
 from app.database.base import Base
@@ -16,7 +16,7 @@ class GovernmentScheme(Base):
     )
     scheme_name: Mapped[str] = mapped_column(String(512), nullable=False)
     ministry: Mapped[str] = mapped_column(String(255), nullable=False)
-    description: Mapped[str] = mapped_column(text, nullable=True)
+    description: Mapped[str] = mapped_column(Text, nullable=True)
     
     # Eligibility rules as JSONB for dynamic checking
     eligibility_rules: Mapped[dict] = mapped_column(JSONB, default={}, server_default=text("'{}'::jsonb"))

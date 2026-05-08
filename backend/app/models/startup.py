@@ -1,6 +1,6 @@
 import uuid
 from datetime import datetime, timezone
-from sqlalchemy import String, DateTime, text, ForeignKey, Integer, Float
+from sqlalchemy import String, DateTime, text, ForeignKey, Integer, Float, Text
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from sqlalchemy.dialects.postgresql import UUID, JSONB
 from app.database.base import Base
@@ -26,7 +26,7 @@ class Startup(Base):
     team_size: Mapped[int] = mapped_column(Integer, default=1)
     revenue: Mapped[float] = mapped_column(Float, default=0.0)
     location: Mapped[str] = mapped_column(String(255), nullable=True)
-    business_idea: Mapped[str] = mapped_column(text, nullable=True)
+    business_idea: Mapped[str] = mapped_column(Text, nullable=True)
     
     # JSONB columns for flexible data
     documents: Mapped[dict] = mapped_column(JSONB, default={}, server_default=text("'{}'::jsonb"))
