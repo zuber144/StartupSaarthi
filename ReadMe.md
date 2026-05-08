@@ -379,7 +379,20 @@ cp .env.example .env
 # Edit .env and add your Gemini API Key and Database URL
 ```
 
-### Running the Backend
+### 3. Database Migration
+
+After configuring your `.env` file, run the migration script to automatically create the database and setup the schema:
+
+```bash
+python db_migrate.py
+```
+
+This script will:
+- Create the PostgreSQL database if it doesn't exist.
+- Initialize all tables based on SQLAlchemy models.
+- Automatically add new columns to existing tables if you modify the models in the future.
+
+### 4. Running the Backend
 
 ```bash
 uvicorn app.main:app --reload
@@ -388,7 +401,7 @@ The API will be available at `http://localhost:8000`.
 
 ---
 
-## 3. Frontend Setup (React + Tailwind)
+## 5. Frontend Setup (React + Tailwind)
 
 Navigate to the `frontend` directory and install the necessary packages.
 
