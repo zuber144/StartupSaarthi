@@ -335,3 +335,96 @@ Our vision is to build an AI-powered startup ecosystem assistant that helps foun
 # Startup Saarthi AI
 
 ### “Your AI Guide for Startup Growth.”
+
+---
+
+# Setup Guide
+
+Follow these steps to set up the project locally on your machine.
+
+## Prerequisites
+
+- **Python 3.9+**
+- **Node.js 18+**
+- **PostgreSQL** (installed and running)
+
+## 1. Clone the Repository
+
+```bash
+git clone https://github.com/zuber144/StartupSaarthi.git
+cd StartupSaarthi
+```
+
+## 2. Backend Setup (FastAPI)
+
+Navigate to the `backend` directory and set up a virtual environment.
+
+```bash
+cd backend
+
+# Create virtual environment
+python -m venv venv
+
+# Activate virtual environment
+# On Windows:
+.\venv\Scripts\activate
+# On macOS/Linux:
+source venv/bin/activate
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Configure environment variables
+cp .env.example .env
+# Edit .env and add your Gemini API Key and Database URL
+```
+
+### Running the Backend
+
+```bash
+uvicorn app.main:app --reload
+```
+The API will be available at `http://localhost:8000`.
+
+---
+
+## 3. Frontend Setup (React + Tailwind)
+
+Navigate to the `frontend` directory and install the necessary packages.
+
+```bash
+cd ../frontend
+
+# Install dependencies
+npm install
+
+# Start the development server
+npm run dev
+```
+The frontend will be available at `http://localhost:5173`.
+
+---
+
+## Project Structure
+
+```text
+StartupSaarthi/
+├── backend/
+│   ├── app/
+│   │   ├── agents/      # AI Multi-agent logic
+│   │   ├── api/         # FastAPI routes
+│   │   ├── core/        # Config & Security
+│   │   ├── db/          # Database session
+│   │   ├── models/      # SQLAlchemy models
+│   │   ├── schemas/     # Pydantic schemas
+│   │   └── main.py      # Entry point
+│   └── requirements.txt
+├── frontend/
+│   ├── src/
+│   │   ├── components/  # UI components
+│   │   ├── pages/       # Page layouts
+│   │   └── services/    # API integration
+│   └── tailwind.config.js
+└── README.md
+```
+
