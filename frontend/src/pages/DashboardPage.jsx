@@ -12,7 +12,7 @@ const DashboardPage = ({ onNavigate, currentPage }) => {
     <div className="min-h-screen flex flex-col pt-24 bg-background">
       <Navbar onNavigate={onNavigate} currentPage={currentPage} />
       
-      <main className="flex-grow max-w-[1200px] mx-auto w-full px-12 pb-20">
+      <main className="flex-grow max-w-[1200px] mx-auto w-full px-6 md:px-12 pb-20">
         {/* Header */}
         <header className="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 pt-8">
           <div>

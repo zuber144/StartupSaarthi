@@ -9,6 +9,7 @@ import DiscoveryHubPage from './pages/DiscoveryHubPage';
 import AnalyzerPage from './pages/AnalyzerPage';
 import DashboardPage from './pages/DashboardPage';
 import AuthPage from './pages/AuthPage';
+import ProfilePage from './pages/ProfilePage';
 
 const App = () => {
   const [currentPage, setCurrentPage] = React.useState('landing');
@@ -31,10 +32,14 @@ const App = () => {
     return <AuthPage onNavigate={navigate} />;
   }
 
+  if (currentPage === 'profile') {
+    return <ProfilePage onNavigate={navigate} currentPage={currentPage} />;
+  }
+
   return (
     <div className="min-h-screen pt-20">
       <Navbar onNavigate={navigate} currentPage={currentPage} />
-      <main className="max-w-[1200px] mx-auto px-12 pb-20">
+      <main className="max-w-[1200px] mx-auto px-6 md:px-12 pb-20 overflow-x-hidden">
         <Hero onNavigate={navigate} />
         <Metrics />
         <Agents />
