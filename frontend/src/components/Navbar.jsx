@@ -16,7 +16,7 @@ const Navbar = ({ onNavigate, currentPage }) => {
             onClick={() => onNavigate('landing')}
             className="font-display text-2xl tracking-tighter text-on-surface font-extrabold"
           >
-            FundAI
+            Startup Saarthi
           </button>
           <div className="hidden md:flex gap-2">
             {navItems.map((item) => (
@@ -36,12 +36,15 @@ const Navbar = ({ onNavigate, currentPage }) => {
         </div>
         <div className="flex items-center gap-4">
           <button 
-            onClick={() => onNavigate('analyzer')}
+            onClick={() => onNavigate('auth')}
             className="hidden md:block btn-primary px-4 py-2 rounded-xl text-[13px] font-semibold"
           >
             Get Funded
           </button>
-          <button className="text-on-surface-variant hover:text-primary transition-colors p-2 rounded-full hover:bg-surface-container-low/50">
+          <button 
+            onClick={() => onNavigate('auth')}
+            className="text-on-surface-variant hover:text-primary transition-colors p-2 rounded-full hover:bg-surface-container-low/50"
+          >
             <span className="material-symbols-outlined">account_circle</span>
           </button>
         </div>

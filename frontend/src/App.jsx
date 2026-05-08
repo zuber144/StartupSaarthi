@@ -8,6 +8,7 @@ import Footer from './components/Footer';
 import DiscoveryHubPage from './pages/DiscoveryHubPage';
 import AnalyzerPage from './pages/AnalyzerPage';
 import DashboardPage from './pages/DashboardPage';
+import AuthPage from './pages/AuthPage';
 
 const App = () => {
   const [currentPage, setCurrentPage] = React.useState('landing');
@@ -24,6 +25,10 @@ const App = () => {
 
   if (currentPage === 'funding_os') {
     return <DashboardPage onNavigate={navigate} currentPage={currentPage} />;
+  }
+
+  if (currentPage === 'auth') {
+    return <AuthPage onNavigate={navigate} />;
   }
 
   return (
