@@ -1,7 +1,35 @@
 import React, { useState } from 'react';
+import { authAPI } from '../services/api';
 
 const AuthPage = ({ onNavigate }) => {
   const [isLogin, setIsLogin] = useState(true);
+  const [fullName, setFullName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError('');
+    setLoading(true);
+
+    try {
+      if (isLogin) {
+        await authAPI.login(email, password);
+        onNavigate('profile');
+      } else {
+        await authAPI.signup(fullName, email, password);
+        // Auto-login after signup
+        await authAPI.login(email, password);
+        onNavigate('profile');
+      }
+    } catch (err) {
+      setError(err.message || 'Something went wrong. Please try again.');
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div className="min-h-screen flex bg-surface-container-lowest font-body-md">
@@ -64,14 +92,23 @@ const AuthPage = ({ onNavigate }) => {
             </p>
           </div>
 
-          <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+          {error && (
+            <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-xl text-red-700 text-sm font-medium">
+              {error}
+            </div>
+          )}
+
+          <form className="space-y-6" onSubmit={handleSubmit}>
             {!isLogin && (
               <div>
                 <label className="block text-[13px] font-bold text-on-surface-variant uppercase tracking-wider mb-2">Full Name</label>
                 <input 
-                  type="text" 
+                  type="text"
+                  value={fullName}
+                  onChange={(e) => setFullName(e.target.value)}
                   className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all font-medium"
                   placeholder="John Doe"
+                  required
                 />
               </div>
             )}
@@ -79,9 +116,12 @@ const AuthPage = ({ onNavigate }) => {
             <div>
               <label className="block text-[13px] font-bold text-on-surface-variant uppercase tracking-wider mb-2">Email Address</label>
               <input 
-                type="email" 
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all font-medium"
                 placeholder="name@company.com"
+                required
               />
             </div>
 
@@ -91,18 +131,22 @@ const AuthPage = ({ onNavigate }) => {
                 {isLogin && <a href="#" className="text-[13px] text-primary font-bold hover:underline">Forgot password?</a>}
               </div>
               <input 
-                type="password" 
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all font-medium"
                 placeholder="••••••••"
+                required
+                minLength={6}
               />
             </div>
 
             <button 
               type="submit"
-              onClick={() => onNavigate('profile')}
-              className="w-full btn-primary py-4 rounded-xl font-bold text-base shadow-lg shadow-primary/20"
+              disabled={loading}
+              className="w-full btn-primary py-4 rounded-xl font-bold text-base shadow-lg shadow-primary/20 disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {isLogin ? 'Sign In' : 'Create Account'}
+              {loading ? 'Please wait...' : (isLogin ? 'Sign In' : 'Create Account')}
             </button>
           </form>
 
@@ -129,7 +173,7 @@ const AuthPage = ({ onNavigate }) => {
           <p className="mt-10 text-center text-[13px] font-medium text-on-surface-variant">
             {isLogin ? "Don't have an account?" : "Already have an account?"}{' '}
             <button 
-              onClick={() => setIsLogin(!isLogin)}
+              onClick={() => { setIsLogin(!isLogin); setError(''); }}
               className="text-primary font-bold hover:underline"
             >
               {isLogin ? 'Sign up' : 'Log in'}

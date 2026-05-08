@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { authAPI } from './services/api';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Metrics from './components/Metrics';
@@ -12,9 +13,42 @@ import AuthPage from './pages/AuthPage';
 import ProfilePage from './pages/ProfilePage';
 
 const App = () => {
-  const [currentPage, setCurrentPage] = React.useState('landing');
+  const [currentPage, setCurrentPage] = useState('landing');
+  const [isLoggedIn, setIsLoggedIn] = useState(authAPI.isLoggedIn());
+  const [user, setUser] = useState(authAPI.getCurrentUser());
 
-  const navigate = (page) => setCurrentPage(page);
+  // Listen for auth logout events (triggered by 401 responses)
+  useEffect(() => {
+    const handleLogout = () => {
+      setIsLoggedIn(false);
+      setUser(null);
+      setCurrentPage('auth');
+    };
+    window.addEventListener('auth:logout', handleLogout);
+    return () => window.removeEventListener('auth:logout', handleLogout);
+  }, []);
+
+  const navigate = (page) => {
+    // Protect routes that need auth
+    const protectedPages = ['profile', 'analyzer', 'funding_os'];
+    if (protectedPages.includes(page) && !authAPI.isLoggedIn()) {
+      setCurrentPage('auth');
+      return;
+    }
+    setCurrentPage(page);
+  };
+
+  const handleAuthSuccess = () => {
+    setIsLoggedIn(true);
+    setUser(authAPI.getCurrentUser());
+  };
+
+  const handleLogout = () => {
+    authAPI.logout();
+    setIsLoggedIn(false);
+    setUser(null);
+    setCurrentPage('landing');
+  };
 
   if (currentPage === 'discovery') {
     return <DiscoveryHubPage onNavigate={navigate} currentPage={currentPage} />;
@@ -25,20 +59,40 @@ const App = () => {
   }
 
   if (currentPage === 'funding_os') {
-    return <DashboardPage onNavigate={navigate} currentPage={currentPage} />;
+    return <DashboardPage onNavigate={navigate} currentPage={currentPage} user={user} />;
   }
 
   if (currentPage === 'auth') {
-    return <AuthPage onNavigate={navigate} />;
+    return (
+      <AuthPage 
+        onNavigate={(page) => {
+          handleAuthSuccess();
+          navigate(page);
+        }} 
+      />
+    );
   }
 
   if (currentPage === 'profile') {
-    return <ProfilePage onNavigate={navigate} currentPage={currentPage} />;
+    return (
+      <ProfilePage 
+        onNavigate={navigate} 
+        currentPage={currentPage} 
+        user={user} 
+        onLogout={handleLogout} 
+      />
+    );
   }
 
   return (
     <div className="min-h-screen pt-20">
-      <Navbar onNavigate={navigate} currentPage={currentPage} />
+      <Navbar 
+        onNavigate={navigate} 
+        currentPage={currentPage} 
+        isLoggedIn={isLoggedIn} 
+        user={user} 
+        onLogout={handleLogout} 
+      />
       <main className="max-w-[1200px] mx-auto px-6 md:px-12 pb-20 overflow-x-hidden">
         <Hero onNavigate={navigate} />
         <Metrics />

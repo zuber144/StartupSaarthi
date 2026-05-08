@@ -12,3 +12,6 @@ alembic
 asyncpg
 passlib[bcrypt]
 python-jose[cryptography]
+beautifulsoup4
+lxml
+email-validator

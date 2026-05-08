@@ -1,0 +1,224 @@
+[
+  {
+    "scheme_name": "Startup India Seed Fund Scheme (SISFS)",
+    "ministry": "Department for Promotion of Industry and Internal Trade (DPIIT)",
+    "description": "Provides financial assistance to startups for proof of concept, prototype development, product trials, market entry, and commercialization. Aims to support startups at early stages.",
+    "eligibility_rules": {
+      "dpiit_recognized": true,
+      "max_age_years": 2,
+      "entity_types": ["Private Limited", "LLP", "Partnership"],
+      "sectors": ["all"],
+      "stage": ["ideation", "validation", "early_traction"],
+      "max_funding_already_received": 10000000
+    },
+    "funding_amount": 5000000,
+    "application_link": "https://seedfund.startupindia.gov.in",
+    "source": "Startup India"
+  },
+  {
+    "scheme_name": "Fund of Funds for Startups (FFS)",
+    "ministry": "DPIIT / SIDBI",
+    "description": "Government contributes to SEBI-registered Alternative Investment Funds (AIFs) which in turn invest in startups. Not a direct funding scheme but increases venture capital availability.",
+    "eligibility_rules": {
+      "dpiit_recognized": true,
+      "entity_types": ["Private Limited"],
+      "sectors": ["all"],
+      "stage": ["growth", "scaling"],
+      "min_revenue": 0
+    },
+    "funding_amount": 100000000,
+    "application_link": "https://www.startupindia.gov.in/content/sih/en/government-schemes/fund-of-funds.html",
+    "source": "Startup India"
+  },
+  {
+    "scheme_name": "Credit Guarantee Scheme for Startups (CGSS)",
+    "ministry": "DPIIT",
+    "description": "Provides credit guarantees to loans extended by banks and financial institutions to DPIIT-recognized startups, reducing the risk for lenders and enabling startups to access debt financing without collateral.",
+    "eligibility_rules": {
+      "dpiit_recognized": true,
+      "max_age_years": 10,
+      "entity_types": ["Private Limited", "LLP", "Partnership"],
+      "sectors": ["all"],
+      "stage": ["validation", "early_traction", "growth"]
+    },
+    "funding_amount": 100000000,
+    "application_link": "https://www.startupindia.gov.in",
+    "source": "Startup India"
+  },
+  {
+    "scheme_name": "MSME Credit Linked Capital Subsidy Scheme (CLCSS)",
+    "ministry": "Ministry of MSME",
+    "description": "Provides 15% capital subsidy on institutional finance up to ₹1 crore for technology upgradation in MSMEs. Helps startups modernize their production processes.",
+    "eligibility_rules": {
+      "entity_types": ["Private Limited", "LLP", "Partnership", "Proprietorship"],
+      "sectors": ["manufacturing", "services"],
+      "stage": ["early_traction", "growth", "scaling"],
+      "msme_registered": true,
+      "max_investment_plant_machinery": 100000000
+    },
+    "funding_amount": 1500000,
+    "application_link": "https://msme.gov.in/credit-linked-capital-subsidy-scheme",
+    "source": "MSME"
+  },
+  {
+    "scheme_name": "MSME ASPIRE Scheme",
+    "ministry": "Ministry of MSME",
+    "description": "A Scheme for Promotion of Innovation, Rural Industries and Entrepreneurship. Sets up incubation centers and livelihood business incubators to promote startups in agro-industry.",
+    "eligibility_rules": {
+      "entity_types": ["Private Limited", "LLP", "Partnership", "Proprietorship"],
+      "sectors": ["agriculture", "rural", "food_processing"],
+      "stage": ["ideation", "validation", "early_traction"],
+      "location_preference": "rural"
+    },
+    "funding_amount": 10000000,
+    "application_link": "https://msme.gov.in/aspire-scheme",
+    "source": "MSME"
+  },
+  {
+    "scheme_name": "Prime Minister's Employment Generation Programme (PMEGP)",
+    "ministry": "Ministry of MSME / KVIC",
+    "description": "Provides margin money subsidy for setting up new micro enterprises. Subsidy ranges from 15% to 35% of the project cost depending on location and category of beneficiary.",
+    "eligibility_rules": {
+      "entity_types": ["Proprietorship", "Partnership", "Private Limited"],
+      "sectors": ["manufacturing", "services"],
+      "stage": ["ideation", "validation"],
+      "max_project_cost_manufacturing": 5000000,
+      "max_project_cost_services": 2000000,
+      "min_age": 18
+    },
+    "funding_amount": 2500000,
+    "application_link": "https://www.kviconline.gov.in/pmegpeportal/pmegphome/index.jsp",
+    "source": "MSME"
+  },
+  {
+    "scheme_name": "Atal Innovation Mission (AIM)",
+    "ministry": "NITI Aayog",
+    "description": "Promotes innovation and entrepreneurship through Atal Incubation Centers (AICs) and Atal Tinkering Labs. Provides grants up to ₹10 crore to incubators supporting startups.",
+    "eligibility_rules": {
+      "entity_types": ["Private Limited", "LLP"],
+      "sectors": ["technology", "deeptech", "healthcare", "cleantech"],
+      "stage": ["ideation", "validation", "early_traction"],
+      "innovation_driven": true
+    },
+    "funding_amount": 10000000,
+    "application_link": "https://aim.gov.in",
+    "source": "NITI Aayog"
+  },
+  {
+    "scheme_name": "SIDBI Make in India Soft Loan Fund (SMILE)",
+    "ministry": "SIDBI",
+    "description": "Provides soft loans to MSMEs including startups at attractive interest rates for various business needs including equipment purchase, working capital, and expansion.",
+    "eligibility_rules": {
+      "entity_types": ["Private Limited", "LLP", "Partnership"],
+      "sectors": ["manufacturing", "services"],
+      "stage": ["early_traction", "growth"],
+      "msme_registered": true
+    },
+    "funding_amount": 25000000,
+    "application_link": "https://www.sidbi.in/en/smile",
+    "source": "SIDBI"
+  },
+  {
+    "scheme_name": "SIDBI Fund of Funds",
+    "ministry": "SIDBI",
+    "description": "SIDBI manages the Fund of Funds for Startups (FFS) on behalf of the government, investing in SEBI-registered AIFs that provide venture capital to startups.",
+    "eligibility_rules": {
+      "dpiit_recognized": true,
+      "entity_types": ["Private Limited"],
+      "sectors": ["all"],
+      "stage": ["growth", "scaling"],
+      "high_growth_potential": true
+    },
+    "funding_amount": 50000000,
+    "application_link": "https://www.sidbi.in",
+    "source": "SIDBI"
+  },
+  {
+    "scheme_name": "Karnataka Elevate 100",
+    "ministry": "Karnataka IT/BT Department",
+    "description": "Identifies and supports 100 most innovative startups in Karnataka with funding, mentorship, and market access. Provides grants up to ₹50 lakhs.",
+    "eligibility_rules": {
+      "entity_types": ["Private Limited", "LLP"],
+      "sectors": ["technology", "biotech", "cleantech", "social_impact"],
+      "stage": ["validation", "early_traction"],
+      "location": "Karnataka",
+      "karnataka_registered": true,
+      "max_age_years": 5
+    },
+    "funding_amount": 5000000,
+    "application_link": "https://startup.karnataka.gov.in/elevate100",
+    "source": "Karnataka Startup Portal"
+  },
+  {
+    "scheme_name": "Karnataka Idea2PoC Grant",
+    "ministry": "Karnataka IT/BT Department",
+    "description": "Provides grants up to ₹50 lakhs for startups to convert their innovative ideas into proof of concept. Supports product development and validation.",
+    "eligibility_rules": {
+      "entity_types": ["Private Limited", "LLP", "Partnership"],
+      "sectors": ["technology", "deeptech", "healthcare", "agriculture"],
+      "stage": ["ideation", "validation"],
+      "location": "Karnataka",
+      "karnataka_registered": true
+    },
+    "funding_amount": 5000000,
+    "application_link": "https://startup.karnataka.gov.in/idea2poc",
+    "source": "Karnataka Startup Portal"
+  },
+  {
+    "scheme_name": "Stand-Up India Scheme",
+    "ministry": "Department of Financial Services",
+    "description": "Facilitates bank loans between ₹10 lakh and ₹1 crore to at least one SC/ST and one woman borrower per bank branch for setting up a greenfield enterprise.",
+    "eligibility_rules": {
+      "entity_types": ["Proprietorship", "Partnership", "Private Limited"],
+      "sectors": ["manufacturing", "services", "trading"],
+      "stage": ["ideation", "validation", "early_traction"],
+      "special_category": ["SC", "ST", "women"],
+      "greenfield_enterprise": true
+    },
+    "funding_amount": 10000000,
+    "application_link": "https://www.standupmitra.in",
+    "source": "Startup India"
+  },
+  {
+    "scheme_name": "MUDRA Yojana (Shishu / Kishore / Tarun)",
+    "ministry": "Ministry of Finance",
+    "description": "Provides micro-finance loans to non-corporate, non-farm small/micro enterprises. Three categories: Shishu (up to ₹50K), Kishore (₹50K-5L), Tarun (₹5L-10L).",
+    "eligibility_rules": {
+      "entity_types": ["Proprietorship", "Partnership", "Private Limited", "LLP"],
+      "sectors": ["all"],
+      "stage": ["ideation", "validation", "early_traction"],
+      "non_farm": true
+    },
+    "funding_amount": 1000000,
+    "application_link": "https://www.mudra.org.in",
+    "source": "Ministry of Finance"
+  },
+  {
+    "scheme_name": "BioNEST Incubation Programme",
+    "ministry": "BIRAC / Department of Biotechnology",
+    "description": "Bio-Incubators Nurturing Entrepreneurship for Scaling Technologies. Provides incubation support including lab space, mentoring, and seed funding for biotech startups.",
+    "eligibility_rules": {
+      "entity_types": ["Private Limited", "LLP"],
+      "sectors": ["biotech", "healthcare", "medical_devices", "agriculture_biotech"],
+      "stage": ["ideation", "validation", "early_traction"],
+      "innovation_driven": true
+    },
+    "funding_amount": 5000000,
+    "application_link": "https://birac.nic.in/bionest.php",
+    "source": "BIRAC"
+  },
+  {
+    "scheme_name": "Technology Incubation and Development of Entrepreneurs (TIDE 2.0)",
+    "ministry": "Ministry of Electronics and IT (MeitY)",
+    "description": "Supports tech startups through incubation centres across India. Provides financial support up to ₹7 lakhs for EiR and up to ₹30 lakhs for startups.",
+    "eligibility_rules": {
+      "entity_types": ["Private Limited", "LLP"],
+      "sectors": ["technology", "electronics", "IT", "IoT", "AI"],
+      "stage": ["ideation", "validation", "early_traction"],
+      "tech_focused": true
+    },
+    "funding_amount": 3000000,
+    "application_link": "https://www.meity.gov.in/tide-20",
+    "source": "MeitY"
+  }
+]

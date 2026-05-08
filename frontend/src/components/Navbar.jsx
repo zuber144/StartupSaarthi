@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Navbar = ({ onNavigate, currentPage }) => {
+const Navbar = ({ onNavigate, currentPage, isLoggedIn, user, onLogout }) => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
   const navItems = [
@@ -37,18 +37,41 @@ const Navbar = ({ onNavigate, currentPage }) => {
           </div>
         </div>
         <div className="flex items-center gap-2 md:gap-4">
-          <button 
-            onClick={() => onNavigate('auth')}
-            className="hidden md:block btn-primary px-4 py-2 rounded-xl text-[13px] font-semibold"
-          >
-            Get Funded
-          </button>
-          <button 
-            onClick={() => onNavigate('profile')}
-            className="text-on-surface-variant hover:text-primary transition-colors p-2 rounded-full hover:bg-surface-container-low/50"
-          >
-            <span className="material-symbols-outlined">account_circle</span>
-          </button>
+          {isLoggedIn ? (
+            <>
+              <span className="hidden md:block text-sm font-bold text-on-surface-variant">
+                {user?.full_name || 'Founder'}
+              </span>
+              <button 
+                onClick={() => onNavigate('profile')}
+                className="text-on-surface-variant hover:text-primary transition-colors p-2 rounded-full hover:bg-surface-container-low/50"
+              >
+                <span className="material-symbols-outlined">account_circle</span>
+              </button>
+              <button
+                onClick={onLogout}
+                className="hidden md:flex items-center gap-1.5 text-on-surface-variant hover:text-red-500 text-[13px] font-bold px-3 py-2 rounded-lg transition-all hover:bg-red-50"
+              >
+                <span className="material-symbols-outlined text-[18px]">logout</span>
+                Logout
+              </button>
+            </>
+          ) : (
+            <>
+              <button 
+                onClick={() => onNavigate('auth')}
+                className="hidden md:block btn-primary px-4 py-2 rounded-xl text-[13px] font-semibold"
+              >
+                Get Funded
+              </button>
+              <button 
+                onClick={() => onNavigate('auth')}
+                className="text-on-surface-variant hover:text-primary transition-colors p-2 rounded-full hover:bg-surface-container-low/50"
+              >
+                <span className="material-symbols-outlined">account_circle</span>
+              </button>
+            </>
+          )}
           <button 
             className="md:hidden p-2 text-on-surface-variant"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -75,12 +98,21 @@ const Navbar = ({ onNavigate, currentPage }) => {
               </button>
             ))}
             <div className="h-px bg-outline-variant/10 my-2" />
-            <button 
-              onClick={() => { onNavigate('auth'); setIsMenuOpen(false); }}
-              className="w-full btn-primary py-4 rounded-2xl font-bold mt-2"
-            >
-              Get Funded Now
-            </button>
+            {isLoggedIn ? (
+              <button 
+                onClick={() => { onLogout?.(); setIsMenuOpen(false); }}
+                className="w-full py-4 rounded-2xl font-bold mt-2 text-red-500 bg-red-50 border border-red-200"
+              >
+                Logout
+              </button>
+            ) : (
+              <button 
+                onClick={() => { onNavigate('auth'); setIsMenuOpen(false); }}
+                className="w-full btn-primary py-4 rounded-2xl font-bold mt-2"
+              >
+                Get Funded Now
+              </button>
+            )}
           </div>
         </div>
       )}
