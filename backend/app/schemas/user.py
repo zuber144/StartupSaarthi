@@ -1,4 +1,4 @@
-from pydantic import BaseModel, EmailStr, ConfigDict
+from pydantic import BaseModel, EmailStr, ConfigDict, Field
 from datetime import datetime
 from uuid import UUID
 from typing import Optional
@@ -9,7 +9,7 @@ class UserBase(BaseModel):
     role: Optional[str] = "founder"
 
 class UserCreate(UserBase):
-    password: str
+    password: str = Field(..., min_length=8, max_length=72)
 
 class UserUpdate(BaseModel):
     full_name: Optional[str] = None
