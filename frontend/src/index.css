@@ -1,26 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .glass-nav {
+    @apply backdrop-blur-2xl bg-white/80;
+  }
+  
+  .btn-primary {
+    @apply bg-primary-container text-white shadow-[inset_0_0_0_1px_rgba(0,0,0,0.1)] active:scale-[0.98] transition-transform duration-200;
+  }
+  
+  .btn-secondary {
+    @apply bg-surface-container-low text-on-surface shadow-[inset_0_0_0_1px_rgba(0,0,0,0.05)] active:scale-[0.98] transition-transform duration-200 border border-secondary-container;
+  }
+  
+  .soft-shadow {
+    @apply shadow-[0_10px_40px_rgba(0,0,0,0.04)];
+  }
+  
+  .border-subtle {
+    @apply border border-surface-container-highest;
+  }
+}
+
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Geist', sans-serif;
 }
 
 body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  @apply bg-surface-container-lowest text-on-surface antialiased selection:bg-primary-container selection:text-on-primary-container;
 }
