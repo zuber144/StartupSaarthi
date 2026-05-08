@@ -18,18 +18,18 @@ const ProfilePage = ({ onNavigate, currentPage }) => {
     <div className="min-h-screen flex flex-col pt-24 bg-surface-container-lowest font-body-md">
       <Navbar onNavigate={onNavigate} currentPage={currentPage} />
 
-      <main className="flex-grow max-w-[1200px] mx-auto w-full px-12 pb-20">
+      <main className="flex-grow max-w-[1200px] mx-auto w-full px-4 md:px-12 pb-20">
         {/* Profile Header */}
-        <div className="relative mb-12">
-          <div className="h-48 w-full bg-gradient-to-r from-primary to-primary-container rounded-3xl overflow-hidden shadow-lg">
+        <div className="relative mb-8 md:mb-12">
+          <div className="h-32 md:h-48 w-full bg-gradient-to-r from-primary to-primary-container rounded-2xl md:rounded-3xl overflow-hidden shadow-lg">
             <div className="absolute inset-0 opacity-20">
               <div className="absolute -right-20 -top-20 w-[400px] h-[400px] bg-white rounded-full blur-[100px]"></div>
             </div>
           </div>
           
-          <div className="absolute -bottom-10 left-10 flex items-end gap-6">
-            <div className="w-32 h-32 rounded-3xl bg-white p-1.5 shadow-xl border border-outline-variant/30">
-              <div className="w-full h-full rounded-2xl bg-surface-container overflow-hidden border border-outline-variant/10">
+          <div className="absolute -bottom-6 md:-bottom-10 left-6 md:left-10 flex items-end gap-4 md:gap-6">
+            <div className="w-20 h-20 md:w-32 md:h-32 rounded-2xl md:rounded-3xl bg-white p-1 md:p-1.5 shadow-xl border border-outline-variant/30">
+              <div className="w-full h-full rounded-xl md:rounded-2xl bg-surface-container overflow-hidden border border-outline-variant/10">
                 <img 
                   alt="Profile" 
                   className="w-full h-full object-cover" 
@@ -37,34 +37,34 @@ const ProfilePage = ({ onNavigate, currentPage }) => {
                 />
               </div>
             </div>
-            <div className="mb-4">
-              <h1 className="text-3xl font-extrabold text-on-surface tracking-tight leading-none mb-1">Aditya Sharma</h1>
-              <p className="text-on-surface-variant font-medium">Founder at EcoCharge India</p>
+            <div className="mb-2 md:mb-4">
+              <h1 className="text-xl md:text-3xl font-extrabold text-on-surface tracking-tight leading-none mb-1">Aditya Sharma</h1>
+              <p className="text-xs md:text-base text-on-surface-variant font-medium">Founder at EcoCharge India</p>
             </div>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-12 mt-16">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 md:gap-12 mt-12 md:mt-16">
           {/* Sidebar Tabs */}
           <aside className="lg:col-span-1">
-            <nav className="flex flex-col gap-2">
+            <nav className="flex lg:flex-col gap-2 overflow-x-auto pb-4 lg:pb-0 scrollbar-hide -mx-4 px-4 lg:mx-0 lg:px-0">
               {tabs.map((tab) => (
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className={`flex items-center gap-4 px-6 py-4 rounded-2xl transition-all font-bold text-sm ${
+                  className={`flex items-center gap-3 md:gap-4 px-4 md:px-6 py-3 md:py-4 rounded-xl md:rounded-2xl transition-all font-bold text-xs md:text-sm whitespace-nowrap lg:whitespace-normal ${
                     activeTab === tab.id 
                     ? 'bg-primary text-white shadow-lg shadow-primary/20 scale-[1.02]' 
                     : 'text-on-surface-variant hover:bg-surface-container-low'
                   }`}
                 >
-                  <span className="material-symbols-outlined">{tab.icon}</span>
+                  <span className="material-symbols-outlined text-[20px] md:text-[24px]">{tab.icon}</span>
                   {tab.label}
                 </button>
               ))}
             </nav>
             
-            <div className="mt-12 p-6 bg-surface-container-low rounded-3xl border border-outline-variant/20">
+            <div className="hidden lg:block mt-12 p-6 bg-surface-container-low rounded-3xl border border-outline-variant/20">
               <h4 className="text-[11px] font-bold text-outline uppercase tracking-widest mb-4">Profile Strength</h4>
               <div className="w-full h-2 bg-white rounded-full overflow-hidden mb-3">
                 <div className="h-full bg-primary w-[85%] rounded-full"></div>
@@ -74,7 +74,7 @@ const ProfilePage = ({ onNavigate, currentPage }) => {
           </aside>
 
           {/* Content Area */}
-          <section className="lg:col-span-3 bg-white rounded-3xl p-10 shadow-soft border border-outline-variant/20">
+          <section className="lg:col-span-3 bg-white rounded-2xl md:rounded-3xl p-6 md:p-10 shadow-soft border border-outline-variant/20">
             {activeTab === 'projects' && (
               <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
                 <div className="flex justify-between items-center mb-8">

@@ -39,7 +39,7 @@ const App = () => {
   return (
     <div className="min-h-screen pt-20">
       <Navbar onNavigate={navigate} currentPage={currentPage} />
-      <main className="max-w-[1200px] mx-auto px-12 pb-20">
+      <main className="max-w-[1200px] mx-auto px-6 md:px-12 pb-20 overflow-x-hidden">
         <Hero onNavigate={navigate} />
         <Metrics />
         <Agents />
