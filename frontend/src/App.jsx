@@ -7,6 +7,7 @@ import CTA from './components/CTA';
 import Footer from './components/Footer';
 import DiscoveryHubPage from './pages/DiscoveryHubPage';
 import AnalyzerPage from './pages/AnalyzerPage';
+import DashboardPage from './pages/DashboardPage';
 
 const App = () => {
   const [currentPage, setCurrentPage] = React.useState('landing');
@@ -19,6 +20,10 @@ const App = () => {
 
   if (currentPage === 'analyzer') {
     return <AnalyzerPage onNavigate={navigate} currentPage={currentPage} />;
+  }
+
+  if (currentPage === 'funding_os') {
+    return <DashboardPage onNavigate={navigate} currentPage={currentPage} />;
   }
 
   return (
