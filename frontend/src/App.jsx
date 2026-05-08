@@ -9,6 +9,7 @@ import DiscoveryHubPage from './pages/DiscoveryHubPage';
 import AnalyzerPage from './pages/AnalyzerPage';
 import DashboardPage from './pages/DashboardPage';
 import AuthPage from './pages/AuthPage';
+import ProfilePage from './pages/ProfilePage';
 
 const App = () => {
   const [currentPage, setCurrentPage] = React.useState('landing');
@@ -29,6 +30,10 @@ const App = () => {
 
   if (currentPage === 'auth') {
     return <AuthPage onNavigate={navigate} />;
+  }
+
+  if (currentPage === 'profile') {
+    return <ProfilePage onNavigate={navigate} currentPage={currentPage} />;
   }
 
   return (

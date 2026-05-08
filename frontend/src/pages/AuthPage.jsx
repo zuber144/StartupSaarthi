@@ -99,7 +99,7 @@ const AuthPage = ({ onNavigate }) => {
 
             <button 
               type="submit"
-              onClick={() => onNavigate('funding_os')}
+              onClick={() => onNavigate('profile')}
               className="w-full btn-primary py-4 rounded-xl font-bold text-base shadow-lg shadow-primary/20"
             >
               {isLogin ? 'Sign In' : 'Create Account'}
