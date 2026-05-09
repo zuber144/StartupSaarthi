@@ -3,7 +3,7 @@
  * Handles all backend communication with auth token management.
  */
 
-const API_BASE = 'http://localhost:8000/api/v1';
+const API_BASE = 'http://localhost:8001/api/v1';
 
 // ------------------------------------------------------------------ //
 //  Token Management
@@ -54,8 +54,8 @@ async function request(endpoint, options = {}) {
       headers,
     });
 
-    // Handle 401 — token expired
-    if (response.status === 401) {
+    // Handle 401 — token expired (but skip for login route where 401 means invalid credentials)
+    if (response.status === 401 && !endpoint.includes('/auth/login')) {
       removeToken();
       window.dispatchEvent(new Event('auth:logout'));
       throw new Error('Session expired. Please log in again.');
@@ -63,7 +63,14 @@ async function request(endpoint, options = {}) {
 
     if (!response.ok) {
       const error = await response.json().catch(() => ({}));
-      throw new Error(error.detail || `Request failed: ${response.status}`);
+      let errorMessage = error.detail || `Request failed: ${response.status}`;
+      
+      // Handle FastAPI validation error arrays (422 Unprocessable Entity)
+      if (Array.isArray(error.detail)) {
+        errorMessage = error.detail.map(err => `${err.loc.slice(-1)[0]}: ${err.msg}`).join(', ');
+      }
+      
+      throw new Error(errorMessage);
     }
 
     // Handle 204 No Content
@@ -79,6 +86,8 @@ async function request(endpoint, options = {}) {
     throw error;
   }
 }
+
+export { request };
 
 // ------------------------------------------------------------------ //
 //  Auth API

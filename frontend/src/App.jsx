@@ -11,11 +11,19 @@ import AnalyzerPage from './pages/AnalyzerPage';
 import DashboardPage from './pages/DashboardPage';
 import AuthPage from './pages/AuthPage';
 import ProfilePage from './pages/ProfilePage';
+import useAnalysisStore from './services/analysisStore';
 
 const App = () => {
-  const [currentPage, setCurrentPage] = useState('landing');
+  const [currentPage, setCurrentPage] = useState(authAPI.isLoggedIn() ? 'landing' : 'auth');
   const [isLoggedIn, setIsLoggedIn] = useState(authAPI.isLoggedIn());
   const [user, setUser] = useState(authAPI.getCurrentUser());
+
+  // Sync analysis store on mount if logged in
+  useEffect(() => {
+    if (isLoggedIn) {
+      useAnalysisStore.hydrate();
+    }
+  }, [isLoggedIn]);
 
   // Listen for auth logout events (triggered by 401 responses)
   useEffect(() => {
@@ -47,7 +55,7 @@ const App = () => {
     authAPI.logout();
     setIsLoggedIn(false);
     setUser(null);
-    setCurrentPage('landing');
+    setCurrentPage('auth');
   };
 
   if (currentPage === 'discovery') {
@@ -55,11 +63,11 @@ const App = () => {
   }
 
   if (currentPage === 'analyzer') {
-    return <AnalyzerPage onNavigate={navigate} currentPage={currentPage} />;
+    return <AnalyzerPage onNavigate={navigate} currentPage={currentPage} user={user} onLogout={handleLogout} />;
   }
 
   if (currentPage === 'funding_os') {
-    return <DashboardPage onNavigate={navigate} currentPage={currentPage} user={user} />;
+    return <DashboardPage onNavigate={navigate} currentPage={currentPage} user={user} onLogout={handleLogout} />;
   }
 
   if (currentPage === 'auth') {

@@ -50,49 +50,31 @@ The system then:
 
 # Multi-Agent Architecture
 
-The system uses 5 AI agents working together.
+The system uses 4 core AI agents working together (plus a Master Orchestrator and Validation agent).
 
-## 1. Research Agent
+## 1. Research & Eligibility Agent
 
 ### Responsibilities
 
 * Searches startup schemes and grants
 * Collects funding opportunities
-* Retrieves startup-related resources
+* Verifies eligibility conditions simultaneously
+* Checks startup stage and document requirements
 
 ### Input
 
-* Startup profile
-* Domain
-* Location
+* Startup profile (Domain, Location, Stage)
+* Funding scheme criteria
 
 ### Output
 
 * List of matching schemes and opportunities
-
----
-
-## 2. Eligibility Agent
-
-### Responsibilities
-
-* Verifies eligibility conditions
-* Checks startup stage requirements
-* Validates document requirements
-
-### Input
-
-* Startup profile
-* Funding scheme requirements
-
-### Output
-
-* Eligible / Not Eligible status
+* Eligible / Not Eligible status per scheme
 * Missing requirements
 
 ---
 
-## 3. Strategy Agent
+## 2. Strategy Agent
 
 ### Responsibilities
 
@@ -118,7 +100,7 @@ The system uses 5 AI agents working together.
 
 ---
 
-## 4. Document Agent
+## 3. Document Agent
 
 ### Responsibilities
 
@@ -139,7 +121,7 @@ The system uses 5 AI agents working together.
 
 ---
 
-## 5. Monitoring Agent
+## 4. Monitoring Agent
 
 ### Responsibilities
 

@@ -255,55 +255,87 @@ Return ONLY the category name as a single word (e.g., "full_analysis"). No other
     # ------------------------------------------------------------------ #
 
     def _aggregate_results(self, agent_results: dict, intent: str) -> dict:
-        """Combine all agent outputs into a unified response structure."""
-        combined = {
+        """
+        Combine all agent outputs into the Strict Intelligence Contract v1.0.
+        This structure is deterministic and shared between backend and frontend.
+        """
+        # Initialize the contract
+        contract = {
+            "contract_version": "1.0",
             "intent": intent,
-            "research_eligibility": {},
-            "strategy": {},
-            "documents": {},
-            "monitoring": {},
+            "readiness_score": 0,
+            "confidence_score": 0.0,
+            "schemes": [],
+            "roadmap": [],
+            "gaps": [],
+            "validation_note": "",
+            "raw_agent_data": {}, # Preserve for deep debugging if needed
         }
 
-        for agent_name, result in agent_results.items():
-            if result.get("status") == "success":
-                data = result.get("data", {})
-                if agent_name == "research_eligibility":
-                    combined["research_eligibility"] = data
-                elif agent_name == "strategy":
-                    combined["strategy"] = data
-                elif agent_name == "document":
-                    combined["documents"] = data
-                elif agent_name == "monitoring":
-                    combined["monitoring"] = data
-            else:
-                # Include error info for failed agents
-                combined[agent_name] = {
-                    "error": result.get("error", "Agent execution failed"),
-                    "status": "failed",
-                }
+        # 1. Extract Research & Eligibility
+        re_result = agent_results.get("research_eligibility", {})
+        if re_result.get("status") == "success":
+            data = re_result.get("data", {})
+            contract["schemes"] = data.get("schemes") or data.get("eligible_schemes") or []
+            contract["gaps"] = data.get("missing_requirements") or data.get("gaps") or []
+            contract["raw_agent_data"]["research_eligibility"] = data
 
-        return combined
+        # 2. Extract Strategy
+        strat_result = agent_results.get("strategy", {})
+        if strat_result.get("status") == "success":
+            data = strat_result.get("data", {})
+            contract["readiness_score"] = data.get("readiness_score") or 0
+            contract["roadmap"] = data.get("roadmap_steps") or data.get("roadmap") or []
+            contract["raw_agent_data"]["strategy"] = data
+
+        # Ensure all items in schemes have the required fields
+        normalized_schemes = []
+        raw_schemes = contract["schemes"] or []
+        for s in raw_schemes:
+            if not isinstance(s, dict):
+                continue
+            normalized_schemes.append({
+                "scheme_name": s.get("scheme_name") or s.get("name") or "Unknown Scheme",
+                "approval_probability": s.get("approval_probability") or s.get("probability") or 0.5,
+                "why_matched": s.get("why_matched") or s.get("reason") or s.get("eligibility_reason") or "Matched based on startup profile.",
+                "missing_requirements": s.get("missing_requirements") or [],
+                "recommendation": s.get("recommendation") or "Apply following the roadmap guidance.",
+                "eligibility_confidence": s.get("eligibility_confidence") or 0.8,
+            })
+        contract["schemes"] = normalized_schemes
+
+        return contract
 
     # ------------------------------------------------------------------ #
     #  Validation
     # ------------------------------------------------------------------ #
 
     async def _validate(
-        self, combined: dict, startup_profile: dict, schemes: list[dict]
+        self, contract: dict, startup_profile: dict, schemes: list[dict]
     ) -> dict:
-        """Send combined results to the Validation Agent."""
+        """
+        Send the Intelligence Contract to the Validation Agent for audit.
+        Populates validation_note and confidence_score.
+        """
         try:
             validation_input = {
-                "combined_output": combined,
+                "combined_output": contract,
                 "startup_profile": startup_profile,
                 "known_schemes": schemes,
             }
             validation_result = await self._validation_agent.safe_execute(validation_input)
+            
             if validation_result.get("status") == "success":
-                return validation_result.get("data", combined)
+                val_data = validation_result.get("data", {})
+                contract["validation_note"] = val_data.get("note") or val_data.get("validation_note") or "Analysis validated by AI audit."
+                contract["confidence_score"] = val_data.get("confidence_score") or val_data.get("confidence") or 0.9
             else:
-                logger.warning("[Master] Validation failed, returning unvalidated results")
-                return combined
+                contract["validation_note"] = "Validation agent skipped. Use with caution."
+                contract["confidence_score"] = 0.7
+            
+            return contract
         except Exception as e:
             logger.error(f"[Master] Validation error: {e}")
-            return combined
+            contract["validation_note"] = f"Validation system error: {str(e)}"
+            contract["confidence_score"] = 0.5
+            return contract

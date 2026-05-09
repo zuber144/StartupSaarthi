@@ -17,7 +17,7 @@ const AuthPage = ({ onNavigate }) => {
     try {
       if (isLogin) {
         await authAPI.login(email, password);
-        onNavigate('profile');
+        onNavigate('landing');
       } else {
         await authAPI.signup(fullName, email, password);
         // Auto-login after signup
